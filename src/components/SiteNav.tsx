@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/", label: "赐福" },
   { href: "/jinjie", label: "进阶" },
-  { href: "/dashu", label: "打书" },
 ];
 
 export default function SiteNav() {

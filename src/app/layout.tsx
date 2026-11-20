@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "赐福模拟器",
     template: "%s · 召唤兽工具",
   },
-  description: "梦幻西游召唤兽赐福、进阶与打书概率",
+  description: "梦幻西游召唤兽赐福与进阶模拟",
 };
 
 export default function RootLayout({

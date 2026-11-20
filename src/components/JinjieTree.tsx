@@ -69,36 +69,20 @@ const SEVENTH = [
   { from: 100, action: "吃8", spirit: 110, end: "成功", after: "恭喜", tone: "win" },
 ];
 
-function numTone(on: boolean, kind: "from" | "sum") {
-  if (!on) return "";
-  return kind === "from"
-    ? "rounded bg-amber-200 px-1 font-semibold ring-2 ring-amber-600"
-    : "rounded bg-sky-200 px-1 font-semibold ring-2 ring-sky-600";
+function numTone(on: boolean) {
+  return on ? "rounded bg-amber-200 px-1 font-semibold ring-2 ring-amber-600" : "";
 }
 
 function actionTone(on: boolean) {
   return on ? "rounded bg-amber-200 px-1 font-semibold ring-2 ring-amber-600" : "text-stone-500";
 }
 
-function StepCell({
-  from,
-  action,
-  sum,
-  spirit,
-}: {
-  from: number;
-  action: string;
-  sum: number | string;
-  spirit: number;
-}) {
-  const atFrom = spirit === from;
-  const atSum = typeof sum === "number" && spirit === sum;
+function StepCell({ from, action, spirit }: { from: number; action: string; spirit: number }) {
+  const on = spirit === from;
   return (
     <span className="inline-flex flex-wrap items-center justify-center gap-1">
-      <span className={numTone(atFrom, "from")}>{from}</span>
-      <span className={actionTone(atFrom)}>{action}</span>
-      <span>→</span>
-      <span className={numTone(atSum, "sum")}>{sum}</span>
+      <span className={numTone(on)}>{from}</span>
+      <span className={actionTone(on)}>{action}</span>
     </span>
   );
 }
@@ -123,7 +107,7 @@ export default function JinjieTree({ spirit, feedsUsed }: { spirit: number; feed
         <div>
           <h2 className="font-serif text-lg text-amber-950">进阶 110 决策树</h2>
           <p className="text-xs text-stone-500">
-            作者：南瓜炮 / 沂水雪山 · 黄=当前该吃什么 · 蓝=刚吃到的累计 {spirit}
+            作者：南瓜炮 / 沂水雪山 · 黄=当前该吃什么 · 当前累计 {spirit}
           </p>
         </div>
         <p className="rounded-full bg-amber-800 px-3 py-1 text-sm text-amber-50">
@@ -156,15 +140,15 @@ export default function JinjieTree({ spirit, feedsUsed }: { spirit: number; feed
                       key={`${col.title}-${row}`}
                       className={`border border-amber-100 px-2 py-1 ${branch.tone === "wash" ? "bg-amber-50" : "bg-white"}`}
                     >
-                      <StepCell from={branch.from} action={branch.action} sum={branch.sum} spirit={spirit} />
+                      <StepCell from={branch.from} action={branch.action} spirit={spirit} />
                     </td>
                   );
                 })}
                 <td className="border border-amber-100 bg-rose-50 px-2 py-1">
-                  <StepCell from={SIXTH[row].from} action={SIXTH[row].action} sum={SIXTH[row].sum} spirit={spirit} />
+                  <StepCell from={SIXTH[row].from} action={SIXTH[row].action} spirit={spirit} />
                 </td>
                 <td className={`border border-amber-100 px-2 py-1 ${SEVENTH[row].tone === "win" ? "bg-emerald-50" : "bg-stone-50"}`}>
-                  <StepCell from={SEVENTH[row].from} action={SEVENTH[row].action} sum={SEVENTH[row].spirit} spirit={spirit} />
+                  <StepCell from={SEVENTH[row].from} action={SEVENTH[row].action} spirit={spirit} />
                 </td>
                 <td className={`border border-amber-100 px-2 py-1 ${SEVENTH[row].tone === "win" ? "bg-emerald-100" : "bg-stone-100"}`}>
                   {SEVENTH[row].end} · {SEVENTH[row].after}
