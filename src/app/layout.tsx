@@ -17,8 +17,11 @@ const title = ZCOOL_XiaoWei({
 });
 
 export const metadata: Metadata = {
-  title: "赐福模拟器",
-  description: "梦幻西游召唤兽赐福：从超级技能库随机抽出 4 个技能",
+  title: {
+    default: "赐福模拟器",
+    template: "%s · 召唤兽工具",
+  },
+  description: "梦幻西游召唤兽赐福、进阶与打书概率",
 };
 
 export default function RootLayout({

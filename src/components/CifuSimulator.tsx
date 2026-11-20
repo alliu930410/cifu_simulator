@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import SiteNav from "@/components/SiteNav";
 import { PET_APPEARANCE_CATALOG, PET_SKILL_CATALOG } from "@/data/catalog";
 import {
   DEFAULT_CIFU_IDS,
@@ -285,6 +286,9 @@ export default function CifuSimulator() {
       <header className="text-center">
         <p className="text-sm tracking-[0.3em] text-amber-800/70">召唤兽工具</p>
         <h1 className="mt-1 font-serif text-3xl text-amber-950">赐福模拟器</h1>
+        <div className="mt-3">
+          <SiteNav />
+        </div>
       </header>
 
       <section className="rounded-2xl border border-amber-100 bg-white/80 p-4 shadow-sm">

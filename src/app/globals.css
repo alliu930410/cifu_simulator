@@ -301,3 +301,50 @@ h2,
 .cifu-switch:checked::after {
   transform: translateX(16px);
 }
+
+.item-slot {
+  position: relative;
+  display: flex;
+  width: 76px;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border-radius: 8px;
+  border: 1px solid #6b74b0;
+  background: linear-gradient(180deg, #3a4270 0%, #2a3058 100%);
+  padding: 6px 4px 4px;
+  color: #f3e6b0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.item-slot:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.item-slot:disabled {
+  opacity: 0.45;
+}
+
+.item-slot img {
+  height: 48px;
+  width: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.item-qty {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff6c8;
+  text-shadow: 0 1px 2px #1a1a28;
+}
+
+.item-name {
+  max-width: 72px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.2;
+}
